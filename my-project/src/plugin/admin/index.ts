@@ -1,5 +1,8 @@
 import iView from 'iview';
+import {Menu,Submenu,MenuItem,MenuItemGroup} from 'element-ui'
+
 import 'iview/dist/styles/iview.css';
+import 'element-ui/lib/theme-chalk/index.css';
 import pluginOpen from '../open';
 import VueParticles from 'vue-particles';
 export default {
@@ -16,5 +19,9 @@ export default {
         Vue.use(pluginOpen)
         // 粒子特效
         Vue.use(VueParticles)
+        Vue.use(Menu);
+        Vue.use(Submenu);
+        Vue.use(MenuItem);
+        Vue.use(MenuItemGroup);
     }
 }
