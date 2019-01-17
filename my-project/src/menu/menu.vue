@@ -69,10 +69,10 @@
         //         !this.state.isCollapsed ? 'hide-trigger' : ''
         //     ];
         // }
-        handleOpen(key:string, keyPath:string[]) {
+        handleOpen(key:string, keyPath:Array<string>) {
             console.log(key, keyPath);
         }
-        handleClose(key:string, keyPath:string[]) {
+        handleClose(key:string, keyPath:Array<string>) {
             console.log(key, keyPath);
         }
     }
