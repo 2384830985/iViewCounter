@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import Login from '@/views/login';
+import Layout from '@/layout/layout.vue';
 
 Vue.use(Router);
 /**
@@ -9,10 +10,21 @@ Vue.use(Router);
 const frameOut = [
   // 登录
   {
-    path     : '/login',
-    name     : 'Login',
-    component: Login
+      path     : '/login',
+      name     : 'Login',
+      component: Login
   }
+];
+/**
+ * 主框架
+ * @type {{path: string; name: string; component: Layout}[]}
+ */
+const content = [
+    {
+        path     : '/content',
+        name     : 'Layout',
+        component: Layout
+    }
 ]
 export default new Router({
   // mode  : 'history',
@@ -24,6 +36,7 @@ export default new Router({
       name     : 'login',
       component: Login,
     },
-    ...frameOut
+    ...frameOut,
+    ...content
   ],
 });

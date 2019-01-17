@@ -1,6 +1,7 @@
 import store from '@/store';
 import util from '@/libs/util';
 import aixos from 'axios';
+import setting from '@/setting'
 import {Message} from 'iview';
 import {State, Action, Getter } from 'vuex-class';
 import loading from '@/libs/loading';
@@ -18,7 +19,7 @@ const errorLog = (err:any)=>{
 }
 // 创建一个 axios 实例
 const service:any = aixos.create({
-    baseURL: process.env.VUE_APP_API,
+    baseURL: setting.baseURL,
     timeout: 10000                     // 请求超时时间
 })
 
@@ -38,19 +39,19 @@ service.interceptors.request.use(
 service.interceptors.response.use(
     (response:any) => {
         console.log(response)
-        const res = response.data;
-        if (res.statusCode !== 200) {
+        const res = response;
+        if (res.status !== 200) {
             // Message({
             //   message : res.msg,
             //   type    : 'error',
             //   duration: 3 * 1000
             // })
             return Promise.reject(res.msg);
-          } else {
+        } else {
             // message(response.config)
             console.log(response.data)
             return res.data;
-          }
+        }
     },
     (error:any) => {
         console.log(error)

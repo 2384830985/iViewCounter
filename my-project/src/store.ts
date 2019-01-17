@@ -1,10 +1,12 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import Admin from './store/index'
+import {log,state,mutations} from './store/index'
 Vue.use(Vuex);
 
 export default new Vuex.Store({
+    state,
+    mutations,
     modules:{
-        Admin
+        log
     }
 });

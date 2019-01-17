@@ -1,12 +1,13 @@
 import { Component, Vue } from 'vue-property-decorator';
 import { Particles } from '@/components/vueparticles'
+import { login } from "@/api/login";
 
 /**
  * 账号的校验
  */
 interface interFaceForm{
     name    : string,
-    paddword: string,
+    password: string,
 }
 
 /**
@@ -40,7 +41,7 @@ export default class Login extends Vue {
      */
     private sizeForm:interFaceForm = {
         name    : '',
-        paddword: ''
+        password: ''
     }
     /**
      * 表单校验
@@ -81,10 +82,19 @@ export default class Login extends Vue {
      * 登陆
      */
     submit(){
+        let _this = this;
         this.$refs.sizeForm.validate((valid:Object) => {
             console.log(valid)
             if (valid) {
-                alert('submit!');
+                login(this.sizeForm).then((res:any)=>{
+                    if (res.code===0) {
+                        this.$Message.success('登陆成功');
+                        _this.$router.push('content')
+                    }else {
+                        this.$Message.error(res.data.msg);
+                    }
+                    console.log(res)
+                })
             } else {
                 console.log('error submit!!');
                 return false;

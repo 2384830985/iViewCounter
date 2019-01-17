@@ -1,13 +1,37 @@
+<style scoped>
+ @import "../menu/menu.less";
+</style>
 <template>
-    <div>
-        123
-        <router-view/>
+    <div class="layout">
+        <div class="ivu-layout ivu-layout-has-sider" style="min-height: 100%">
+            <!--左侧导航-->
+            <Navigation></Navigation>
+            <div class="ivu-layout">
+                <!--上方-->
+                <Headers></Headers>
+                <!--内容-->
+                <Content>
+                    Content
+                    <router-view/>
+                </Content>
+            </div>
+        </div>
     </div>
 </template>
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
-@Component
-export default class Layout extends Vue{
-
-} 
+    import { Component, Vue } from 'vue-property-decorator';
+    import { State, Action, Getter ,Mutation } from "vuex-class";
+    import Navigation from '../menu/menu.vue';
+    import Headers from '../header/header.vue';
+    @Component({
+        components:{
+            Navigation,
+            Headers,
+        }
+    })
+    export default class Layout extends Vue{
+        @State state;
+        created() {
+        }
+    }
 </script>

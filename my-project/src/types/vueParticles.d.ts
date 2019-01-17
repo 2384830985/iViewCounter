@@ -1,4 +1,4 @@
-
+// 粒子特效
 interface particles {
     // 默认'#dedede'。粒子颜色。
     color: String,

@@ -7,32 +7,17 @@
                 <div class="t-login-logo">
                     <img src="../../assets/logo.jpg" class="w-100 h-100 border-r50" alt="admin">
                 </div>
-                <!--<el-form ref="sizeForm" :rules="loginRules" :model="sizeForm">-->
-                    <!--<el-form-item label=" " class="mt-4" prop="name">-->
-                        <!--<el-input -->
-                            <!--v-model     = "sizeForm.name"-->
-                            <!--placeholder = "请输入账号"-->
-                        <!--&gt;-->
-                            <!--&lt;!&ndash; <template slot="prepend">-->
-                                <!--<i class="icon-yonghu"></i>-->
-                            <!--</template> &ndash;&gt;-->
-                        <!--</el-input>-->
-                    <!--</el-form-item>-->
-                    <!--<el-form-item label=" " prop="password">-->
-                        <!--<el-input -->
-                            <!--type        = "password"-->
-                            <!--v-model     = "sizeForm.password"-->
-                            <!--placeholder = "请输入密码"-->
-                        <!--&gt;-->
-                            <!--&lt;!&ndash; <template slot="prepend">-->
-                                <!--<i class="el-icon-star-off"></i>-->
-                            <!--</template> &ndash;&gt;-->
-                        <!--</el-input>-->
-                    <!--</el-form-item>-->
-                    <!--<el-form-item label=" ">-->
-                        <!--<el-button class="w-100" @click="submit('sizeForm')">登陆</el-button>-->
-                    <!--</el-form-item>-->
-                <!--</el-form>-->
+                <Form ref="sizeForm" :model="sizeForm" :rules="loginRules">
+                    <FormItem class="mt-3" prop="name">
+                        <Input v-model="sizeForm.name" size="large" placeholder="请输入账号"/>
+                    </FormItem>
+                    <FormItem prop="password">
+                        <Input type= "password" v-model="sizeForm.password" size="large" placeholder="请输入密码"/>
+                    </FormItem>
+                    <FormItem>
+                        <Button class="w-100" size="large" @click="submit('sizeForm')">登陆</Button>
+                    </FormItem>
+                </Form>
             </div>
         </div>
     </div>
