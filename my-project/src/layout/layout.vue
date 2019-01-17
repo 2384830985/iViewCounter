@@ -30,7 +30,7 @@
         }
     })
     export default class Layout extends Vue{
-        @State state;
+        @State state:any;
         created() {
         }
     }

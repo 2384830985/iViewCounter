@@ -21,7 +21,7 @@
     import { State, Action, Getter ,Mutation } from "vuex-class";
     @Component
     export default class Navigation extends Vue{
-        @State state;
+        @State state:any;
         get menuItemClasses(){
             return [
                 'menu-item',

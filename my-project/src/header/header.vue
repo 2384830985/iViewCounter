@@ -8,8 +8,8 @@
     import { State, Action, Getter ,Mutation } from "vuex-class";
     @Component
     export default class Headers extends Vue{
-        @State state;
-        @Mutation SET_ISCOLLAPSED;
+        @State state:any;
+        @Mutation SET_ISCOLLAPSED:any;
         collapsedSider () {
             this.SET_ISCOLLAPSED(!this.state.isCollapsed)
         }
