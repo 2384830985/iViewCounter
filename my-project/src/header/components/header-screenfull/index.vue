@@ -1,10 +1,10 @@
 <template>
     <el-tooltip class="item"
                 effect="dark"
-                :content="screenFullActive?'全屏':'退出全屏'"
+                :content="screenFullActive?'退出全屏':'全屏'"
                 placement="bottom">
         <Icon class="font-16"
-              :type="screenFullActive?'md-contract':'ios-contract'"
+              :type="screenFullActive?'ios-contract':'md-contract'"
               @click="buttonCli" />
     </el-tooltip>
 </template>
@@ -21,7 +21,7 @@
         buttonCli(){
             console.log(ScreenFull.isFullscreen)
             console.log(this.screenFullActive)
-            this.SET_SCREENFULL(ScreenFull.isFullscreen)
+            this.SET_SCREENFULL(!ScreenFull.isFullscreen)
             if (!ScreenFull.enabled) { // 如果不允许进入全屏，发出不允许提示
                 return false
             }

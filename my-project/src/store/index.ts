@@ -1,3 +1,4 @@
 export {default as log} from './modules/admin/log';
-export {default as state} from './modules/admin/state';
-export {default as mutations} from './modules/admin/mutations';
+export {default as state} from './modules/state';
+export {default as mutations} from './modules/mutations';
+export {default as cookie} from './modules/cookie/index';

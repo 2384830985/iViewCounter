@@ -1,3 +1,4 @@
+import cookie from '@/libs/cookie.ts'
 export default {
     /**
      * 左侧导航是否收缩
@@ -6,7 +7,9 @@ export default {
      * @constructor
      */
     SET_ISCOLLAPSED(state: any, data: boolean) {
-        state.state.isCollapsed = data
+        console.log(data);
+        cookie.set('isCollapsed',data);
+        state.state.isCollapsed = data;
     },
     /**
      * 是否全屏

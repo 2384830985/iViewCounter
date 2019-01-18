@@ -1,7 +1,7 @@
 import { Component, Vue } from 'vue-property-decorator';
 import { Particles } from '@/components/vueparticles'
 import { login } from "@/api/login";
-
+import {State,Mutation} from 'vuex-class'
 /**
  * 账号的校验
  */
@@ -32,6 +32,7 @@ interface LoginRulesFun{
     }
 })
 export default class Login extends Vue {
+    @Mutation GET_TOKEN:any;
     // 非空断言
     $refs!:{
         sizeForm: HTMLFormElement;
@@ -89,6 +90,7 @@ export default class Login extends Vue {
                 login(this.sizeForm).then((res:any)=>{
                     if (res.code===0) {
                         this.$Message.success('登陆成功');
+                        _this.GET_TOKEN('1')
                         _this.$router.push('content')
                     }else {
                         this.$Message.error(res.data.msg);

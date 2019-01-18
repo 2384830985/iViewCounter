@@ -2,8 +2,8 @@ import store from '@/store';
 import util from '@/libs/util';
 import aixos from 'axios';
 import setting from '@/setting'
-import {Message} from 'iview';
-import {State, Action, Getter } from 'vuex-class';
+import cookie from '@/store/modules/cookie'
+import { Message } from 'iview'
 import loading from '@/libs/loading';
 
 const errorLog = (err:any)=>{
@@ -26,8 +26,17 @@ const service:any = aixos.create({
 // 请求拦截器
 service.interceptors.request.use(
         (config:any) => {
-          console.log(config)
-          return config
+            if (!config.NoCookie) {
+                if (cookie.state.getToken) {
+                    return config
+                }else {
+                    Message.info('当前用户登陆已经过期')
+                    Promise.reject('当前用户登陆已经过期')
+                }
+            }else {
+                return config
+            }
+            console.log(config)
         },
         (error:any) => {
             // 发送失败

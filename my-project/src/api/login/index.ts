@@ -5,5 +5,6 @@ export const login:Function = (data:Object)=>{
         url: '/login',
         method: 'post',
         data: data,
+        NoCookie: true
     })
 }
