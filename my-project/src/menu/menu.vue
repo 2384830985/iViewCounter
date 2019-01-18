@@ -1,22 +1,7 @@
 <template>
-    <!--<Sider hide-trigger collapsible :collapsed-width="78" :class="hideTrigger" v-model="state.isCollapsed">-->
-        <!--<Menu active-name="1-2" theme="light" width="auto" :class="menuItemClasses">-->
-            <!--<MenuItem name="1-1">-->
-                <!--<Icon type="ios-navigate"></Icon>-->
-                <!--<span>Option 1</span>-->
-            <!--</MenuItem>-->
-            <!--<MenuItem name="1-2">-->
-                <!--<Icon type="ios-search"></Icon>-->
-                <!--<span>Option 2</span>-->
-            <!--</MenuItem>-->
-            <!--<MenuItem name="1-3">-->
-                <!--<Icon type="ios-settings"></Icon>-->
-                <!--<span>Option 3</span>-->
-            <!--</MenuItem>-->
-        <!--</Menu>-->
-    <!--</Sider>-->
     <el-menu default-active="1-4-1"
              class="el-menu-vertical-demo"
+             :class="menuItemClasses"
              @open="handleOpen"
              @close="handleClose"
              :collapse="state.isCollapsed">
@@ -58,17 +43,11 @@
     @Component
     export default class Navigation extends Vue{
         @State state:any;
-        // get menuItemClasses(){
-        //     return [
-        //         'menu-item',
-        //         this.state.isCollapsed ? 'collapsed-menu' : ''
-        //     ]
-        // }
-        // get hideTrigger(){
-        //     return [
-        //         !this.state.isCollapsed ? 'hide-trigger' : ''
-        //     ];
-        // }
+        get menuItemClasses(){
+            return [
+                !this.state.isCollapsed ? 't-el-menu-vertical' : ''
+            ]
+        }
         handleOpen(key:string, keyPath:Array<string>) {
             console.log(key, keyPath);
         }
