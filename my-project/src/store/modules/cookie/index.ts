@@ -6,7 +6,10 @@ import {ActionTree, GetterTree, MutationTree,StoreOptions} from "vuex";
  * @type {{getToken: string | undefined}}
  */
 const state= {
-    getToken: cookie.get('token')
+    // token
+    getToken: cookie.get('token'),
+    // size
+    getSize: cookie.get('size'),
 };
 /**
  * actions
@@ -27,10 +30,41 @@ const getters: GetterTree<String, any> = {
  * @type {{}}
  */
 const mutations: MutationTree<String> = {
+    /**
+     * 修改token
+     * @param state
+     * @param {string} data
+     * @constructor
+     */
     GET_TOKEN: (state:any,data:string)=>{
         cookie.set('token',data)
         state.getToken = data;
-    }
+    },
+    /**
+     * 修改按钮size
+     * @param state
+     * @param {string} data
+     * @constructor
+     */
+    GET_SIZE: (state:any,data:string)=>{
+        cookie.set('size',data)
+        state.getSize = data;
+    },
+    /**
+     * 删除所有cookie
+     * @param state
+     * @param {string} data
+     * @constructor
+     */
+    REMOVE_ALL: (state:any,data?:string)=>{
+        cookie.remove('token');
+        cookie.remove('isCollapsed');
+        cookie.remove('size');
+        localStorage.clear();
+        state.getToken = '';
+        state.getSize = '';
+    },
+
 };
 
 export default {

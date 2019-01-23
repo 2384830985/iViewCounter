@@ -1,8 +1,9 @@
 import iView from 'iview';
-import {Menu,Submenu,MenuItem,MenuItemGroup,Tooltip,} from 'element-ui'
-
+import {Menu,Submenu,MenuItem,MenuItemGroup,Tooltip,Dropdown,DropdownMenu,DropdownItem} from 'element-ui'
+import cookie from '@/libs/cookie.ts'
 import 'iview/dist/styles/iview.css';
 import 'element-ui/lib/theme-chalk/index.css';
+import './../../my-theme/index.less'
 import pluginOpen from '../open';
 import VueParticles from 'vue-particles';
 export default {
@@ -13,8 +14,10 @@ export default {
         Vue.prototype.$env = process.env.NODE_ENV;
         // 当前的 baseUrl
         Vue.prototype.$baseUrl = process.env.BASE_URL;
-        // Element
-        Vue.use(iView)
+        // iView
+        Vue.use(iView, {
+            size: cookie.get('size')|| '',
+        })
         // 引入插件
         Vue.use(pluginOpen)
         // 粒子特效
@@ -24,5 +27,8 @@ export default {
         Vue.use(MenuItem);
         Vue.use(MenuItemGroup);
         Vue.use(Tooltip);
+        Vue.use(Dropdown);
+        Vue.use(DropdownMenu);
+        Vue.use(DropdownItem);
     }
 }

@@ -19,8 +19,6 @@
         @State screenFullActive: any;
         @Mutation SET_SCREENFULL:any;
         buttonCli(){
-            console.log(ScreenFull.isFullscreen)
-            console.log(this.screenFullActive)
             this.SET_SCREENFULL(!ScreenFull.isFullscreen)
             if (!ScreenFull.enabled) { // 如果不允许进入全屏，发出不允许提示
                 return false
