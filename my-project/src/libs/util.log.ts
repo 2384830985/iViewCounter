@@ -1,3 +1,4 @@
+import Setting from '@/setting.ts'
 /**
  * @description 返回这个样式的颜色值
  * @param {String} type 样式名称 [ primary | success | warning | danger | text ]
@@ -35,12 +36,14 @@ let log = {
      * @param {String} type style
      */
     capsule:(title:string, info:string, type:string = 'primary')=> {
-        console.log(
-            `%c ${title} %c ${info} %c`,
-            'background:#35495E; padding: 1px; border-radius: 3px 0 0 3px; color: #fff;',
-            `background:${typeColor(type)}; padding: 1px; border-radius: 0 3px 3px 0;  color: #fff;`,
-            'background:transparent'
-        )
+        if (Setting.debug) {
+            console.log(
+                `%c ${title} %c ${info} %c`,
+                'background:#35495E; padding: 1px; border-radius: 3px 0 0 3px; color: #fff;',
+                `background:${typeColor(type)}; padding: 1px; border-radius: 0 3px 3px 0;  color: #fff;`,
+                'background:transparent'
+            )
+        }
     },
 
     /**
@@ -48,10 +51,12 @@ let log = {
      * @param textArr
      */
     colorful:(textArr:any)=>{
-        console.log(
-            `%c${textArr.map((t:any) => t.text || '').join('%c')}`,
-            ...textArr.map((t:any) => `color: ${typeColor(t.type)};`)
-        )
+        if (Setting.debug) {
+            console.log(
+                `%c${textArr.map((t:any) => t.text || '').join('%c')}`,
+                ...textArr.map((t:any) => `color: ${typeColor(t.type)};`)
+            )
+        }
     },
 
     /**
@@ -59,45 +64,55 @@ let log = {
      * @param {string | number} text
      */
     default:(text:string|number,mark?:string)=>{
-           text        = '====>'+ text;
-        if (mark) text = mark+': ' + text;
-        log.colorful([{ text }])
+        if (Setting.debug) {
+            text = '====>' + text;
+            if (mark) text = mark + ': ' + text;
+            log.colorful([{text}])
+        }
     },
     
     /**
      * @description 打印 primary 样式的文字
      */
     primary:(text:string|number,mark?:string)=>{
-           text        = '====>'+ text;
-        if (mark) text = mark+': ' + text;
-        log.colorful([{ text, type: 'primary' }])
+        if (Setting.debug) {
+            text        = '====>'+ text;
+            if (mark) text = mark+': ' + text;
+            log.colorful([{ text, type: 'primary' }])
+        }
     },
 
     /**
      * @description 打印 success 样式的文字
      */
     success: (text:string|number,mark?:string)=>{
-           text        = '====>'+ text;
-        if (mark) text = mark+': ' + text;
-        log.colorful([{ text, type: 'success' }])
+        if (Setting.debug) {
+            text        = '====>'+ text;
+            if (mark) text = mark+': ' + text;
+            log.colorful([{ text, type: 'success' }])
+        }
     },
 
     /**
      * @description 打印 warning 样式的文字
      */
     warning: (text:string|number,mark?:string)=>{
-              text        = '====>'+ text;
-           if (mark) text = mark+': ' + text;
-        log.colorful([{ text, type: 'warning' }])
+        if (Setting.debug) {
+            text        = '====>'+ text;
+            if (mark) text = mark+': ' + text;
+            log.colorful([{ text, type: 'warning' }])
+        }
     },
 
     /**
      * @description 打印 danger 样式的文字
      */
     danger: (text:string|number,mark?:string)=>{
-           text        = '====>'+ text;
-        if (mark) text = mark+': ' + text;
-        log.colorful([{ text, type: 'danger' }])
+        if (Setting.debug) {
+            text        = '====>'+ text;
+            if (mark) text = mark+': ' + text;
+            log.colorful([{ text, type: 'danger' }])
+        }
     }
 
 }

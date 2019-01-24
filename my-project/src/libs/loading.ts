@@ -1,4 +1,3 @@
-// import { Loading } from 'element-ui';
 import NProgress from 'nprogress';
 
 let loadingInstance = null;

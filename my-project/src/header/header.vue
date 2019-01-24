@@ -1,7 +1,10 @@
 <template>
     <Header :style="{padding: 0}" class="layout-header-bar t-header-content">
         <div class="t-header-item">
-            <Icon @click.native="collapsedSider" :class="rotateIcon" :style="{margin: '0 20px'}" type="md-menu" size="24"></Icon>
+            <!--控制左侧导航栏目-->
+            <header-collapsed/>
+            <!--面包屑-->
+            <header-breadcrumb/>
         </div>
         <div class="t-header-setting">
             <!--全屏-->
@@ -12,19 +15,21 @@
             <header-color-picker class="mr-3"/>
             <!--头像-->
             <header-avatar/>
-
         </div>
     </Header>
 </template>
 <script lang="ts">
     import { Component, Vue } from 'vue-property-decorator';
-    import { State, Action, Getter ,Mutation } from "vuex-class";
     import headerScreenFull from './components/header-screenfull/index.vue'
     import headerColorPicker from './components/header-colorPicker/index.vue'
     import headerSize from './components/header-size/index.vue'
     import headerAvatar from './components/header-avatar/index.vue'
+    import headerCollapsed from './components/header-collapsed/index.vue'
+    import headerBreadcrumb from './components/header-breadcrumb/index.vue'
     @Component({
         components: {
+            headerBreadcrumb,
+            headerCollapsed,
             headerAvatar,
             headerSize,
             headerScreenFull,
@@ -32,19 +37,9 @@
         }
     })
     export default class Headers extends Vue{
-        private color:string = '';
-        @State state:any;
-        @Mutation SET_ISCOLLAPSED:any;
-        collapsedSider () {
-            this.SET_ISCOLLAPSED(!this.state.isCollapsed)
+        constructor(){
+            super()
         }
-        get rotateIcon(){
-            return [
-                'menu-icon',
-                this.state.isCollapsed ? 'rotate-icon' : ''
-            ];
-        }
-
     }
 </script>
 

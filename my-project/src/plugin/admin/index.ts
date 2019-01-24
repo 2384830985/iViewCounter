@@ -6,6 +6,8 @@ import 'element-ui/lib/theme-chalk/index.css';
 import './../../my-theme/index.less'
 import pluginOpen from '../open';
 import VueParticles from 'vue-particles';
+import TUI from '@/t-components';
+import log from '@/libs/util.log'
 export default {
     async install(Vue:any,options:Object){
         // 设置为 false 以阻止 vue 在启动时生成生产提示。https://cn.vuejs.org/v2/api/#productionTip
@@ -14,6 +16,8 @@ export default {
         Vue.prototype.$env = process.env.NODE_ENV;
         // 当前的 baseUrl
         Vue.prototype.$baseUrl = process.env.BASE_URL;
+        // console.log
+        Vue.prototype.$log = log;
         // iView
         Vue.use(iView, {
             size: cookie.get('size')|| '',
@@ -22,6 +26,8 @@ export default {
         Vue.use(pluginOpen)
         // 粒子特效
         Vue.use(VueParticles)
+        // 本地ui引入
+        Vue.use(TUI)
         Vue.use(Menu);
         Vue.use(Submenu);
         Vue.use(MenuItem);

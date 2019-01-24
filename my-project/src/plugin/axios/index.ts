@@ -15,7 +15,7 @@ const errorLog = (err:any)=>{
     util.log.danger(456)
     console.log(store.state)
     // // 显示提示
-    // Message.info(err.message)
+    Message.info(err.message)
 }
 // 创建一个 axios 实例
 const service:any = aixos.create({
@@ -47,7 +47,6 @@ service.interceptors.request.use(
 // 响应拦截器
 service.interceptors.response.use(
     (response:any) => {
-        console.log(response)
         const res = response;
         if (res.status !== 200) {
             // Message({
@@ -58,8 +57,12 @@ service.interceptors.response.use(
             return Promise.reject(res.msg);
         } else {
             // message(response.config)
-            console.log(response.data)
-            return res.data;
+            if (res.data.code===0) {
+                return res.data;
+            }else {
+                Message.info(res.data.msg)
+                return Promise.reject(res.data.msg);
+            }
         }
     },
     (error:any) => {

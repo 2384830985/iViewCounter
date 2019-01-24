@@ -52,7 +52,11 @@ const content = [
         name     : 'Layout',
         component: Layout,
         children: [
-
+            {
+                path     : 'buttons',
+                name     : 'buttons',
+                component: () => import('@/views/button/index.vue'),
+            }
         ]
     }
 ]
