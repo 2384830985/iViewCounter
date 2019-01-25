@@ -11,7 +11,7 @@
                 <Headers></Headers>
                 <!--内容-->
                 <Content>
-                    <router-view/>
+                   <app-main/>
                 </Content>
             </div>
         </div>
@@ -22,10 +22,12 @@
     import { State, Action, Getter ,Mutation } from "vuex-class";
     import Navigation from '../menu/menu.vue';
     import Headers from '../header/header.vue';
+    import AppMain from './content/appMain.vue';
     @Component({
         components:{
             Navigation,
             Headers,
+            AppMain,
         }
     })
     export default class Layout extends Vue{

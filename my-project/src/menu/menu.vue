@@ -6,6 +6,7 @@
              @open="handleOpen"
              @close="handleClose"
              ios-football="true"
+             :active-text-color="ColorPicker"
              :collapse="state.isCollapsed">
         <div class="menu-wrapper"
              v-for="(item,index) in menuList" :key="index"
@@ -13,6 +14,9 @@
             <sidebar-item :content="item" :index="(index+1+'')"></sidebar-item>
         </div>
     </el-menu>
+    <!--background-color="#304156"-->
+    <!--text-color="#bfcbd9"-->
+    <!--active-text-color="#409EFF"-->
 </template>
 <script lang="ts">
     import { Component, Vue } from 'vue-property-decorator';
@@ -28,6 +32,7 @@
         private menuList: Array<object> = [];
         private defaultActive: string='';
         @State state:any;
+        @State ColorPicker:any;
         get menuItemClasses(){
             return [
                 !this.state.isCollapsed ? 't-el-menu-vertical' : ''

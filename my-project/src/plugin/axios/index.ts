@@ -4,7 +4,8 @@ import aixos from 'axios';
 import setting from '@/setting'
 import cookie from '@/store/modules/cookie'
 import { Message } from 'iview'
-import loading from '@/libs/loading';
+import Msg from '@/libs/message'
+import Loading from '@/libs/loading';
 
 const errorLog = (err:any)=>{
     // 添加打印错误 打印到控制台
@@ -26,6 +27,8 @@ const service:any = aixos.create({
 // 请求拦截器
 service.interceptors.request.use(
         (config:any) => {
+            console.log(Loading)
+            Loading.show(config);
             if (!config.NoCookie) {
                 if (cookie.state.getToken) {
                     return config
@@ -47,17 +50,16 @@ service.interceptors.request.use(
 // 响应拦截器
 service.interceptors.response.use(
     (response:any) => {
+        console.log(response)
+        Loading.hide(response.config);
+        console.log('睡觉')
         const res = response;
         if (res.status !== 200) {
-            // Message({
-            //   message : res.msg,
-            //   type    : 'error',
-            //   duration: 3 * 1000
-            // })
+            Message.info(res.data.msg)
             return Promise.reject(res.msg);
         } else {
-            // message(response.config)
             if (res.data.code===0) {
+                Msg(response.config)
                 return res.data;
             }else {
                 Message.info(res.data.msg)
@@ -67,6 +69,7 @@ service.interceptors.response.use(
     },
     (error:any) => {
         console.log(error)
+        Loading.hide(error.config);
         // loading.hide(error.config)
         if (error.response && error.response.status === 401) {
         //   util.cookies.remove()

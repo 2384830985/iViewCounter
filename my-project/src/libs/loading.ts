@@ -1,29 +1,47 @@
-import NProgress from 'nprogress';
-
+import iView from 'iview';
+import Jump from '@/libs/overallSituation.ts'
 let loadingInstance = null;
-
-interface config {
-    loading?: {
-
+// iView.LoadingBar.start();
+// iView.LoadingBar.finish();
+// iView.LoadingBar.error();
+interface interfaceConfig {
+    loading: {
+        type: string,
+        time: number
     }
 }
 
-const loading = {
+const Loading = {
     /**
      * 显示
      * config 配置文件
      */
-    show: (config:config)=>{
+    show: (config:interfaceConfig)=>{
+        console.log(config)
         if(config.loading){
-
+            if (config.loading.type==="LoadingBar") {
+                iView.LoadingBar.start();
+            }
+            if (config.loading.type==="Loading") {
+                iView.Spin.show();
+            }
         }
     },
     /**
      * 隐藏
      */
-    hide: ()=>{
-
+    hide: (config:interfaceConfig)=>{
+        if(config.loading){
+            setTimeout(()=>{
+                if (config.loading.type==="LoadingBar") {
+                    iView.LoadingBar.finish();
+                }
+                if (config.loading.type==="Loading") {
+                    iView.Spin.hide();
+                }
+            },config.loading.time||500)
+        }
     }
 }
 
-export default loading;
+export default Loading;

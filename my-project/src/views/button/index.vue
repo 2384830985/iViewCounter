@@ -7,14 +7,15 @@
         <br><br>
         <Button type="info">Info</Button>
         <Button type="success">Success</Button>
-        <Button type="warning">Warning</Button>
+        <Button type="warning" @click="warning">Warning</Button>
         <Button type="error" @click="Error">Error</Button>
     </t-content>
 </template>
 
 <script lang="ts">
     import { Component, Vue } from 'vue-property-decorator';
-    import Util from '@/libs/util'
+    import Util from '@/libs/util';
+    import {xxx,success} from '@/api/service/index.ts'
     @Component
     export default class buttons extends Vue {
         constructor(){
@@ -26,7 +27,10 @@
             super()
         }
         Error(){
-            this.$router.replace('/redirect/content/buttons')
+            xxx()
+        }
+        warning(){
+            success({})
         }
 
         /**
@@ -34,11 +38,6 @@
          */
         created() {
             this.$log.capsule('D2Admin', 'ErrorHandler', 'success');
-
-            // xx.xxx({})
-            //   .then((res:object)=>{
-            //     console.log(res)
-            //   })
         }
     }
 </script>

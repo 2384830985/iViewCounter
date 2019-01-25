@@ -1,5 +1,5 @@
 import iView from 'iview';
-import {Menu,Submenu,MenuItem,MenuItemGroup,Tooltip,Dropdown,DropdownMenu,DropdownItem,Breadcrumb,BreadcrumbItem} from 'element-ui'
+import {Menu,Submenu,MenuItem,MenuItemGroup,Tooltip,Dropdown,DropdownMenu,DropdownItem} from 'element-ui'
 import cookie from '@/libs/cookie.ts'
 import 'iview/dist/styles/iview.css';
 import 'element-ui/lib/theme-chalk/index.css';
@@ -39,7 +39,5 @@ export default {
         Vue.use(Dropdown);
         Vue.use(DropdownMenu);
         Vue.use(DropdownItem);
-        Vue.use(Breadcrumb);
-        Vue.use(BreadcrumbItem);
     }
 }
