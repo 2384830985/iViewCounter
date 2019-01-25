@@ -1,5 +1,5 @@
 import iView from 'iview';
-import {Menu,Submenu,MenuItem,MenuItemGroup,Tooltip,Dropdown,DropdownMenu,DropdownItem} from 'element-ui'
+import {Menu,Submenu,MenuItem,MenuItemGroup,Tooltip,Dropdown,DropdownMenu,DropdownItem,Breadcrumb,BreadcrumbItem} from 'element-ui'
 import cookie from '@/libs/cookie.ts'
 import 'iview/dist/styles/iview.css';
 import 'element-ui/lib/theme-chalk/index.css';
@@ -7,7 +7,8 @@ import './../../my-theme/index.less'
 import pluginOpen from '../open';
 import VueParticles from 'vue-particles';
 import TUI from '@/t-components';
-import log from '@/libs/util.log'
+import log from '@/libs/util.log';
+import Jump from '@/libs/overallSituation'
 export default {
     async install(Vue:any,options:Object){
         // 设置为 false 以阻止 vue 在启动时生成生产提示。https://cn.vuejs.org/v2/api/#productionTip
@@ -18,6 +19,8 @@ export default {
         Vue.prototype.$baseUrl = process.env.BASE_URL;
         // console.log
         Vue.prototype.$log = log;
+        // 全局公共方法
+        Vue.prototype.$Jump = Jump;
         // iView
         Vue.use(iView, {
             size: cookie.get('size')|| '',
@@ -36,5 +39,7 @@ export default {
         Vue.use(Dropdown);
         Vue.use(DropdownMenu);
         Vue.use(DropdownItem);
+        Vue.use(Breadcrumb);
+        Vue.use(BreadcrumbItem);
     }
 }

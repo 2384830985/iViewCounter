@@ -1,10 +1,11 @@
 <template>
-    <el-menu default-active="1-4-1"
+    <el-menu :default-active="defaultActive"
+             router
              class="el-menu-vertical-demo"
              :class="menuItemClasses"
              @open="handleOpen"
-             show-timeout="200"
              @close="handleClose"
+             ios-football="true"
              :collapse="state.isCollapsed">
         <div class="menu-wrapper"
              v-for="(item,index) in menuList" :key="index"
@@ -25,10 +26,7 @@
     })
     export default class Navigation extends Vue{
         private menuList: Array<object> = [];
-        constructor(){
-            super();
-            this.menuList = [];
-        }
+        private defaultActive: string='';
         @State state:any;
         get menuItemClasses(){
             return [
@@ -37,9 +35,9 @@
         }
         created(){
             let _this = this;
+            _this.defaultActive = _this.$Jump.Copy(_this.$route.path);
             menu().then((res:any)=>{
                 _this.menuList = res.data.list;
-                console.log(res.data.list)
             })
         }
         handleOpen(key:string, keyPath:Array<string>) {

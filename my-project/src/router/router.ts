@@ -31,15 +31,10 @@ const refreshing = [
     },
     // 页面重定向 必须保留
     {
-        path: '/redirect/:route',
+        path: '/redirect/:route*',
         name: 'redirect',
         hidden: true,
-        component: {
-            beforeRouteUpdate (to:Route, from:Route, next:Function) {
-                next((vm:any) => vm.$router.replace(from.params.route))
-            },
-            render: (h:any) => h()
-        }
+        component: () => import('@/components/redirect/index.vue'),
     }
 ];
 /**
@@ -51,12 +46,26 @@ const content = [
         path     : '/content',
         name     : 'Layout',
         component: Layout,
+        meta: {
+            title: 'home',
+        },
         children: [
             {
                 path     : 'buttons',
                 name     : 'buttons',
+                meta: {
+                    title: 'buttons',
+                },
                 component: () => import('@/views/button/index.vue'),
-            }
+            },
+            {
+                path     : 'radios',
+                name     : 'radios',
+                meta: {
+                    title: 'radios',
+                },
+                component: () => import('@/views/radio/index.vue'),
+            },
         ]
     }
 ]

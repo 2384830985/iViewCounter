@@ -1,4 +1,4 @@
-export interface Log {
+interface Log {
     capsule: any,
     colorful: any,
     default: any,
@@ -7,6 +7,10 @@ export interface Log {
     warning: any,
     danger: any,
 }
+interface Jump {
+    Copy: any,
+    Sleep: any,
+}
 // 扩充
 import {Route} from "vue-router";
 import VueRouter from "vue-router";
@@ -14,8 +18,9 @@ import Vue from 'vue';
 
 declare module 'vue/types/vue' {
     interface Vue {
-        $router: VueRouter;
-        $route: Route;
-        $log: Log
+        $router: VueRouter,
+        $route: Route,
+        $log: Log,
+        $Jump: Jump
     }
 }

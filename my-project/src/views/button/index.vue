@@ -8,7 +8,7 @@
         <Button type="info">Info</Button>
         <Button type="success">Success</Button>
         <Button type="warning">Warning</Button>
-        <Button type="error">Error</Button>
+        <Button type="error" @click="Error">Error</Button>
     </t-content>
 </template>
 
@@ -24,6 +24,9 @@
             Util.log.warning(1)
             Util.log.danger(1)
             super()
+        }
+        Error(){
+            this.$router.replace('/redirect/content/buttons')
         }
 
         /**

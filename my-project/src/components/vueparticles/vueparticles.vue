@@ -23,7 +23,9 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 
-@Component
+@Component({
+    name: 'Particles'
+})
 export default class Particles extends Vue {
     created() {
       console.log(1);

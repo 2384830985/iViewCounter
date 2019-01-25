@@ -6,7 +6,9 @@
 
 <script lang="ts">
     import { Component, Vue } from 'vue-property-decorator';
-    @Component
+    @Component({
+        name: 'TContent'
+    })
     export default class TContent extends Vue{
         constructor(){
             super()
