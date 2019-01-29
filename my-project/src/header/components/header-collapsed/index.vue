@@ -7,15 +7,15 @@
     import { State, Action, Getter ,Mutation } from "vuex-class";
     @Component
     export default class headerSize extends Vue{
-        @State state:any;
+        @State isCollapsed:any;
         @Mutation SET_ISCOLLAPSED:any;
         collapsedSider () {
-            this.SET_ISCOLLAPSED(!this.state.isCollapsed)
+            this.SET_ISCOLLAPSED(!this.isCollapsed)
         }
         get rotateIcon(){
             return [
                 'menu-icon',
-                this.state.isCollapsed ? 'rotate-icon' : ''
+                this.isCollapsed ? 'rotate-icon' : ''
             ];
         }
     }

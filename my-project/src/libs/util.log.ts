@@ -65,7 +65,7 @@ let log = {
      */
     default:(text:string|number,mark?:string)=>{
         if (Setting.debug) {
-            text = '====>' + text;
+            text = '====>' + JSON.stringify(text);
             if (mark) text = mark + ': ' + text;
             log.colorful([{text}])
         }
@@ -76,7 +76,7 @@ let log = {
      */
     primary:(text:string|number,mark?:string)=>{
         if (Setting.debug) {
-            text        = '====>'+ text;
+            text        = '====>'+ JSON.stringify(text);
             if (mark) text = mark+': ' + text;
             log.colorful([{ text, type: 'primary' }])
         }
@@ -87,7 +87,7 @@ let log = {
      */
     success: (text:string|number,mark?:string)=>{
         if (Setting.debug) {
-            text        = '====>'+ text;
+            text        = '====>'+ JSON.stringify(text);
             if (mark) text = mark+': ' + text;
             log.colorful([{ text, type: 'success' }])
         }
@@ -98,7 +98,7 @@ let log = {
      */
     warning: (text:string|number,mark?:string)=>{
         if (Setting.debug) {
-            text        = '====>'+ text;
+            text        = '====>'+ JSON.stringify(text);
             if (mark) text = mark+': ' + text;
             log.colorful([{ text, type: 'warning' }])
         }
@@ -109,7 +109,7 @@ let log = {
      */
     danger: (text:string|number,mark?:string)=>{
         if (Setting.debug) {
-            text        = '====>'+ text;
+            text        = '====>'+ JSON.stringify(text);
             if (mark) text = mark+': ' + text;
             log.colorful([{ text, type: 'danger' }])
         }

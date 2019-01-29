@@ -5,12 +5,12 @@
                 :index="index+''"
                 v-if="content.child.length>0"
                 :class="{
-            'submenu-title-down':state.isCollapsed,
+            'submenu-title-down':isCollapsed,
             }">
             <!--有下一级的title-->
             <template slot="title">
-                <Icon :type="content.icon" size="24" class="mr-2" :class="{'mr-14':showName&&state.isCollapsed}"/>
-                <span slot="title" v-if="!state.isCollapsed||showName"
+                <Icon :type="content.icon" size="24" class="mr-2" :class="{'mr-14':showName&&isCollapsed}"/>
+                <span slot="title" v-if="!isCollapsed||showName"
                 >{{content.name}}</span>
             </template>
             <div v-for="(items,indexs) in content.child" :key="this">
@@ -23,14 +23,14 @@
                 <!--没有下一级-->
                 <Item v-else
                       :content="items"
-                      :className="state.isCollapsed?'submenu-title-noDown':''"
+                      :className="isCollapsed?'submenu-title-noDown':''"
                       :showName="showName"/>
             </div>
         </el-submenu>
         <!--没有下一级-->
         <Item :content="content"
               v-else
-              :className="state.isCollapsed?'submenu-title-noDown':''"
+              :className="isCollapsed?'submenu-title-noDown':''"
               :showName="showName"/>
     </div>
 </template>
@@ -45,7 +45,7 @@
         }
     })
     export default class SidebarItem extends Vue{
-        @State state:any;
+        @State isCollapsed:any;
         @Prop(Object) content:any;
         @Prop(Boolean) showName:any;
         @Prop(String) index:any;

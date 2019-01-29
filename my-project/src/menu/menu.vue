@@ -7,22 +7,26 @@
              @close="handleClose"
              ios-football="true"
              :active-text-color="ColorPicker"
-             :collapse="state.isCollapsed">
+             :collapse="isCollapsed">
         <div class="menu-wrapper"
              v-for="(item,index) in menuList" :key="index"
         >
             <sidebar-item :content="item" :index="(index+1+'')"></sidebar-item>
         </div>
     </el-menu>
+    <!--@select="handleSelect"-->
+
     <!--background-color="#304156"-->
     <!--text-color="#bfcbd9"-->
     <!--active-text-color="#409EFF"-->
 </template>
 <script lang="ts">
-    import { Component, Vue } from 'vue-property-decorator';
+    import { Component, Vue, Watch } from 'vue-property-decorator';
     import { State, Action, Getter ,Mutation } from "vuex-class";
     import SidebarItem from './sidebar-item/index.vue'
     import { menu } from '@/api/setting/index.ts'
+    import {content} from "../router/router";
+
     @Component({
         components:{
             SidebarItem
@@ -31,25 +35,39 @@
     export default class Navigation extends Vue{
         private menuList: Array<object> = [];
         private defaultActive: string='';
-        @State state:any;
+        @State isCollapsed:any;
         @State ColorPicker:any;
+        @Mutation SET_TAGSVIEW:any;
         get menuItemClasses(){
             return [
-                !this.state.isCollapsed ? 't-el-menu-vertical' : ''
+                !this.isCollapsed ? 't-el-menu-vertical' : ''
             ]
         }
         created(){
+            this.start()
+        }
+        handleOpen(key:string, keyPath:Array<string>) {
+            // console.log(key, keyPath);
+        }
+        handleClose(key:string, keyPath:Array<string>) {
+            // console.log(key, keyPath);
+        }
+        // handleSelect(key:string, keyPath:Array<string>) {
+        //     // this.SET_TAGSVIEW({
+        //     //     // name:
+        //     // });
+        //     console.log(key, keyPath);
+        //     console.log(this.$route);
+        //     console.log(content);
+        // }
+        // 监听路由变化
+        @Watch('$route')
+        private start(){
             let _this = this;
             _this.defaultActive = _this.$Jump.Copy(_this.$route.path);
             menu().then((res:any)=>{
                 _this.menuList = res.data.list;
             })
-        }
-        handleOpen(key:string, keyPath:Array<string>) {
-            console.log(key, keyPath);
-        }
-        handleClose(key:string, keyPath:Array<string>) {
-            console.log(key, keyPath);
         }
 
     }

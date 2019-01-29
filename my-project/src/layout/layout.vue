@@ -9,6 +9,8 @@
             <div class="ivu-layout">
                 <!--上方-->
                 <Headers></Headers>
+                <!--tags-->
+                <tags-view/>
                 <!--内容-->
                 <Content>
                    <app-main/>
@@ -23,11 +25,13 @@
     import Navigation from '../menu/menu.vue';
     import Headers from '../header/header.vue';
     import AppMain from './content/appMain.vue';
+    import TagsView from './tags-view/index.vue';
     @Component({
         components:{
             Navigation,
             Headers,
             AppMain,
+            TagsView,
         }
     })
     export default class Layout extends Vue{

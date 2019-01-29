@@ -41,13 +41,14 @@ const refreshing = [
  * 主框架
  * @type {{path: string; name: string; component: Layout}[]}
  */
-const content = [
+export const content = [
     {
         path     : '/content',
         name     : 'Layout',
         component: Layout,
         meta: {
             title: 'home',
+            name: '首页'
         },
         children: [
             {
@@ -55,6 +56,7 @@ const content = [
                 name     : 'buttons',
                 meta: {
                     title: 'buttons',
+                    name: '按钮'
                 },
                 component: () => import('@/views/button/index.vue'),
             },
@@ -63,6 +65,7 @@ const content = [
                 name     : 'radios',
                 meta: {
                     title: 'radios',
+                    name: '单选框',
                 },
                 component: () => import('@/views/radio/index.vue'),
             },
@@ -75,9 +78,8 @@ export default new Router({
 
   routes: [
     {
-      path     : '/',
-      name     : 'login',
-      component: Login,
+        path     : '/',
+        redirect: '/content'
     },
     ...refreshing,
     ...frameOut,

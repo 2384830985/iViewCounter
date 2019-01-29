@@ -14,16 +14,10 @@
 
 <script lang="ts">
     import { Component, Vue } from 'vue-property-decorator';
-    import Util from '@/libs/util';
     import {xxx,success} from '@/api/service/index.ts'
     @Component
     export default class buttons extends Vue {
         constructor(){
-            Util.log.default(1,'home')
-            Util.log.primary(1,'home')
-            Util.log.success(1,'home')
-            Util.log.warning(1)
-            Util.log.danger(1)
             super()
         }
         Error(){
@@ -32,7 +26,6 @@
         warning(){
             success({})
         }
-
         /**
          * 开始执行
          */

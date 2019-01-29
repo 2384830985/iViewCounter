@@ -28,7 +28,6 @@ import { Component, Vue } from 'vue-property-decorator';
 })
 export default class Particles extends Vue {
     created() {
-      console.log(1);
     }
 }
 </script>

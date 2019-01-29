@@ -1,7 +1,7 @@
 <template>
     <transition name="main-fade"
                 mode="out-in">
-        <keep-alive>
+        <keep-alive :include="IncludeList">
             <router-view :key="key"/>
         </keep-alive>
     </transition>
@@ -9,8 +9,10 @@
 
 <script lang="ts">
     import { Component, Vue } from 'vue-property-decorator';
+    import { State } from 'vuex-class'
     @Component
     export default class AppMain extends Vue{
+        @State IncludeList:any;
         get key() {
             return this.$route.fullPath
         }

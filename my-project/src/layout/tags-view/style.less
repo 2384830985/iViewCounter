@@ -1,0 +1,40 @@
+.t-tags-content{
+  width: 100%;
+  height: 35px;
+  padding: 4px 5px;
+  background: white;
+  margin-top: 1px;
+  border-bottom: 1px solid #e7e7e7;
+  overflow: scroll;
+  white-space: nowrap;
+  .t-tags-color{
+    color: white!important;
+  }
+  .t-tags-item{
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    height: 26px;
+    line-height: 26px;
+    border: 1px solid #d8dce5;
+    color: #495060;
+    background: #fff;
+    padding: 0 30px 0 8px;
+    font-size: 12px;
+    margin-left: 5px;
+    .t-tags-close{
+      position: absolute;
+      font-size: 16px;
+      border-radius: 50%;
+      top: 5px;
+      right: 7px;
+    }
+    .t-tags-close:hover{
+      color: white;
+      background: #909399;
+    }
+  }
+}
+.t-tags-content::-webkit-scrollbar {
+  display: none;
+}

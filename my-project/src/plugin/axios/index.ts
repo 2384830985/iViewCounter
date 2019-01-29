@@ -13,8 +13,6 @@ const errorLog = (err:any)=>{
         util.log.danger('>>>>>> Error >>>>>>')
         console.log(err)
     }
-    util.log.danger(456)
-    console.log(store.state)
     // // 显示提示
     Message.info(err.message)
 }
@@ -27,7 +25,6 @@ const service:any = aixos.create({
 // 请求拦截器
 service.interceptors.request.use(
         (config:any) => {
-            console.log(Loading)
             Loading.show(config);
             if (!config.NoCookie) {
                 if (cookie.state.getToken) {
@@ -39,7 +36,6 @@ service.interceptors.request.use(
             }else {
                 return config
             }
-            console.log(config)
         },
         (error:any) => {
             // 发送失败
@@ -50,9 +46,7 @@ service.interceptors.request.use(
 // 响应拦截器
 service.interceptors.response.use(
     (response:any) => {
-        console.log(response)
         Loading.hide(response.config);
-        console.log('睡觉')
         const res = response;
         if (res.status !== 200) {
             Message.info(res.data.msg)
@@ -68,7 +62,6 @@ service.interceptors.response.use(
         }
     },
     (error:any) => {
-        console.log(error)
         Loading.hide(error.config);
         // loading.hide(error.config)
         if (error.response && error.response.status === 401) {

@@ -10,6 +10,22 @@ const Jump = {
         return obj
     },
     /**
+     * 数组转换字符串
+     */
+    TryTurnStr: (list:Array<number|string>,character:string)=>{
+        let msg = '';
+        list.map((res:string|number,index:number)=>{
+            if (res&&res!=='') {
+                if (index===list.length-1) {
+                    msg += res
+                }else{
+                    msg += res + '' + character
+                }
+            }
+        });
+        return msg
+    },
+    /**
      * 线程睡眠
      * @param {number} d 睡眠时间
      * @constructor

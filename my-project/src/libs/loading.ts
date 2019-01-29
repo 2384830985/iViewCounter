@@ -17,7 +17,6 @@ const Loading = {
      * config 配置文件
      */
     show: (config:interfaceConfig)=>{
-        console.log(config)
         if(config.loading){
             if (config.loading.type==="LoadingBar") {
                 iView.LoadingBar.start();
