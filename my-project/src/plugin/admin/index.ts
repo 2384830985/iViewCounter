@@ -6,7 +6,7 @@ import 'element-ui/lib/theme-chalk/index.css';
 import './../../my-theme/index.less'
 import pluginOpen from '../open';
 import VueParticles from 'vue-particles';
-import TUI from '@/t-components';
+import TUI from '@/t-components/index.ts';
 import log from '@/libs/util.log';
 import Jump from '@/libs/overallSituation'
 export default {

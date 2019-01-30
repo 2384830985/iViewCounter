@@ -14,7 +14,12 @@
     import G2 from '@antv/g2';
     import {chartsBasics} from '@/api/charts/index.ts';
     import bus from '@/libs/eventBus';
-    @Component
+    import TContent from "@/t-components/t-content/index.vue";
+    import TTitle from "@/t-components/t-content-title/index.vue";
+    import TContentCon from "@/t-components/t-content-con/index.vue";
+    @Component({
+        components: {TContentCon, TTitle, TContent}
+    })
     export default class basics extends Vue {
         private data:Array<object> = [];
         private chart:any;
