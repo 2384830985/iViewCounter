@@ -1,4 +1,4 @@
-<style scoped>
+<style>
     @import "style.less";
 </style>
 <template>

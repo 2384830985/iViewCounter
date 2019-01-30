@@ -5,6 +5,8 @@ import Layout from '@/layout/layout.vue';
 import {Route} from 'vue-router'
 Vue.use(Router);
 
+const redirect = { redirect: '/content' };// 重定向
+
 /**
  * 在主框架之外显示
  */
@@ -37,6 +39,31 @@ const refreshing = [
         component: () => import('@/components/redirect/index.vue'),
     }
 ];
+/**
+ * 折线图
+ */
+const chartsList = [
+    {
+        path: '/charts',
+        name: 'charts',
+        component: Layout,
+        meta: {
+            title: 'charts',
+            name: '图表'
+        },
+        children:[
+            {
+                path     : 'basics',
+                name     : 'basics',
+                meta: {
+                    title: 'basics',
+                    name: '基础折线图',
+                },
+                component: () => import('@/views/chart/basics/index.vue'),
+            },
+        ]
+    }
+]
 /**
  * 主框架
  * @type {{path: string; name: string; component: Layout}[]}
@@ -83,6 +110,7 @@ export default new Router({
     },
     ...refreshing,
     ...frameOut,
-    ...content
+    ...content,
+    ...chartsList,
   ],
 });

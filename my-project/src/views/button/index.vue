@@ -26,11 +26,5 @@
         warning(){
             success({})
         }
-        /**
-         * 开始执行
-         */
-        created() {
-            this.$log.capsule('D2Admin', 'ErrorHandler', 'success');
-        }
     }
 </script>

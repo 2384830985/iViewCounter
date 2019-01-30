@@ -1,6 +1,10 @@
 import TContent from './t-content/index.vue'
+import TTitle from './t-content-title/index.vue'
+import TContentCon from './t-content-con/index.vue'
 const components:Array<object> = [
-    TContent
+    TContent,
+    TTitle,
+    TContentCon,
 ];
 
 const install:Function = (Vue:any,opts:object = {})=> {
@@ -18,5 +22,7 @@ if (typeof win !== 'undefined' && win.Vue) {
 
 export default {
     install,
-    TContent
+    TContent,
+    TTitle,
+    TContentCon,
 };

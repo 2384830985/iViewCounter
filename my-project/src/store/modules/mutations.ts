@@ -8,7 +8,6 @@ export default {
      * @constructor
      */
     SET_ISCOLLAPSED(state: any, data: boolean) {
-        console.log(data);
         cookie.set('isCollapsed',data);
         state.isCollapsed = data;
     },
