@@ -69,6 +69,16 @@ export const content = [
                 },
                 component: () => import('@/views/radio/index.vue'),
             },
+            
+            {
+                path     : 'from',
+                name     : 'from',
+                meta: {
+                    title: 'from',
+                    name: '表格',
+                },
+                component: () => import('@/views/from/index.vue'),
+            },
         ]
     }
 ]
