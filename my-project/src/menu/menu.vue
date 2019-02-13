@@ -8,7 +8,7 @@
              ios-football="true"
              :active-text-color="ColorPicker"
              :collapse="isCollapsed">
-        <div class="menu-wrapper"
+        <div :class="!isCollapsed?'menu-wrapper':''"
              v-for="(item,index) in menuList" :key="index"
         >
             <sidebar-item :content="item" :index="(index+1+'')"></sidebar-item>
@@ -23,8 +23,8 @@
 <script lang="ts">
     import { Component, Vue, Watch } from 'vue-property-decorator';
     import { State, Action, Getter ,Mutation } from "vuex-class";
-    import SidebarItem from './sidebar-item/index.vue'
-    import { menu } from '@/api/setting/index.ts'
+    import SidebarItem from './sidebar-item/index.vue';
+    import { menu } from '@/api/setting/index.ts';
     import {content} from "../router/router";
 
     @Component({
@@ -112,5 +112,8 @@
             padding-left: 5px !important;
             padding-right: 20px!important;
         }
+    }
+    .menu-wrapper{
+        width: 169px!important;
     }
 </style>

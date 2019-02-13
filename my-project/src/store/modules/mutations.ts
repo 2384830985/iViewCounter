@@ -47,7 +47,7 @@ export default {
             }
         });
         // 等于1表示没有相同的push 进去
-        if (TagsViewIndex===1) {
+        if (TagsViewIndex===1&&data.name!==''&&data.name) {
             TagsView.push({
                 name: data.meta.name,
                 path: data.path,

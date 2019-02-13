@@ -61,6 +61,15 @@ const chartsList = [
                 },
                 component: () => import('@/views/chart/basics/index.vue'),
             },
+            {
+                path     : 'doubleBroken',
+                name     : 'doubleBroken',
+                meta: {
+                    title: 'doubleBroken',
+                    name: '基础折线图',
+                },
+                component: () => import('@/views/chart/doubleBroken/index.vue'),
+            },
         ]
     }
 ]
